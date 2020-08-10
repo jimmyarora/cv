@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>contact</title>
+  </head>
+  <body>
+    <h3>Pan No. Expiry and id</h3>
+    <ul>
+      <li>VARNAETDS</li>
+      <li>2020-8-30</li>
+      <li id="date"></li>
+    </ul>
+
+    <script>
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if(dd<10)
+    {
+        dd='0'+dd;
+    }
+
+    if(mm<10)
+    {
+        mm='0'+mm;
+    }
+    var today1 = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("date").innerHTML = today1;
+    </script>
+
+
+
+
+  </body>
+</html>
