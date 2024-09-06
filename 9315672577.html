@@ -1,3 +1,22 @@
-<a href="intent://pay?pa=q829249314@ybl&pn=admin&tr=restorent-20240906-130952-47&tn=restorent payment&am=2.0&cu=INR#Intent;scheme=upi;package=com.phonepe.app;action=android.intent.action.VIEW;end;">
-    ay Now
-</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Payment</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
+</head>
+<body>
+    <div>
+        <canvas id="qr-code"></canvas>
+    </div>
+
+    <script>
+        var qr = new QRious({
+            element: document.getElementById('qr-code'),
+            value: 'upi://pay?pa=q829249314@ybl&pn=admin&tr=restorent-20240906-130952-47&tn=restorent payment&am=2.0&cu=INR',
+            size: 200
+        });
+    </script>
+</body>
+</html>
