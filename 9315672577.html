@@ -3,19 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPI Payment</title>
+    <title>Share UPI QR Code</title>
     <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
 </head>
 <body>
     <div>
         <canvas id="qr-code"></canvas>
     </div>
+    <button id="shareButton">Share QR Code</button>
 
     <script>
+        // Generate the QR code
         var qr = new QRious({
             element: document.getElementById('qr-code'),
             value: 'upi://pay?pa=q829249314@ybl&pn=admin&tr=restorent-20240906-130952-47&tn=restorent payment&am=2.0&cu=INR',
             size: 200
+        });
+
+        // Get the canvas element and convert it to a data URL
+        const canvas = document.getElementById('qr-code');
+
+        document.getElementById('shareButton').addEventListener('click', function() {
+            // Convert the canvas to a Blob (image)
+            canvas.toBlob(function(blob) {
+                // Check if the browser supports Web Share API
+                if (navigator.canShare && navigator.canShare({ files: [blob] })) {
+                    // Create a new file to share
+                    const file = new File([blob], 'upi_qr_code.png', {
+                        type: 'image/png'
+                    });
+
+                    // Share the file
+                    navigator.share({
+                        title: 'UPI Payment QR Code',
+                        files: [file]
+                    }).then(() => {
+                        console.log('Sharing successful!');
+                    }).catch((error) => {
+                        console.error('Error sharing:', error);
+                    });
+                } else {
+                    alert('Your browser does not support sharing this content.');
+                }
+            });
         });
     </script>
 </body>
