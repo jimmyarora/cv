@@ -1,39 +1,23 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>contact</title>
-  </head>
-  <body>
-    <h3>Pan No. Expiry and id</h3>
-    <ul>
-      <li>9315672577</li>
-      <li>2022-10-22</li>
-      <li id="date"></li>
-    </ul>
-    <h1>Name : enkatanarayana Pavuluri - 9892903152 </h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Payment</title>
+</head>
+<body>
+
+    <button id="payButton">Pay ₹2.0</button>
 
     <script>
-    var today = new Date();
-    var dd = today.getDate();
+        document.getElementById('payButton').addEventListener('click', function() {
+            // UPI payment URL
+            const upiUrl = "upi://pay?pa=q829249314@ybl&pn=admin&tr=restorent-20240906-130952-47&tn=restorent payment&am=2.0&cu=INR";
 
-    var mm = today.getMonth()+1;
-    var yyyy = today.getFullYear();
-    if(dd<10)
-    {
-        dd='0'+dd;
-    }
-
-    if(mm<10)
-    {
-        mm='0'+mm;
-    }
-    var today1 = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("date").innerHTML = today1;
+            // Redirect the user to the UPI payment link
+            window.location.href = upiUrl;
+        });
     </script>
 
-
-
-
-  </body>
+</body>
 </html>
