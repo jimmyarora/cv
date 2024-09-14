@@ -3,58 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share UPI QR Code</title>
-    <script src="https://cdn.jsdelivr.net/npm/qrious/dist/qrious.min.js"></script>
+    <title>Speech to Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-height: 100px;
+        }
+    </style>
 </head>
 <body>
-    <h1>UPI Payment QR Code</h1>
 
-    <div>
-        <!-- Display the QR code here -->
-        <canvas id="qr-code"></canvas>
-    </div>
+    <h1>Speech to Text</h1>
+    <button id="startBtn">Start Speech Recognition</button>
+    <button id="stopBtn">Stop Speech Recognition</button>
 
-    <!-- Button to share QR code -->
-    <button id="shareButton">hare QR Code</button>
+    <div id="output">Your speech will appear here...</div>
 
     <script>
-        // Generate the QR code using QRious
-        var qr = new QRious({
-            element: document.getElementById('qr-code'),
-            value: 'upi://pay?pa=q829249314@ybl&pn=admin&tr=restorent-20240906-130952-47&tn=restorent payment&am=2.0&cu=INR',
-            size: 200
+        const output = document.getElementById('output');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+
+        // Check if the browser supports speech recognition
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new window.SpeechRecognition();
+
+        // Set recognition settings
+        recognition.lang = 'en-US'; // Set language
+        recognition.interimResults = false; // Return only final results
+        recognition.continuous = true; // Continuous recognition
+
+        // Start speech recognition when button is clicked
+        startBtn.addEventListener('click', () => {
+            recognition.start();
+            output.innerText = 'Listening...';
         });
 
-        const canvas = document.getElementById('qr-code');
+        // Stop speech recognition
+        stopBtn.addEventListener('click', () => {
+            recognition.stop();
+            output.innerText += '\nStopped listening.';
+        });
 
-        document.getElementById('shareButton').addEventListener('click', function() {
-            // Convert the QR code canvas to a Blob (image)
-            canvas.toBlob(function(blob) {
-                if (!navigator.canShare) {
-                    alert('Your browser does not support the Web Share API.');
-                    return;
-                }
+        // Handle speech recognition results
+        recognition.addEventListener('result', (event) => {
+            const transcript = event.results[event.resultIndex][0].transcript;
+            output.innerText = transcript;
+        });
 
-                // Check if sharing files is supported
-                if (navigator.canShare({ files: [new File([blob], 'upi_qr_code.png')] })) {
-                    const file = new File([blob], 'upi_qr_code.png', {
-                        type: 'image/png'
-                    });
-
-                    // Use the Web Share API to share the file
-                    navigator.share({
-                        title: 'UPI Payment QR Code',
-                        files: [file]
-                    }).then(() => {
-                        console.log('Sharing successful!');
-                    }).catch((error) => {
-                        console.error('Error sharing:', error);
-                    });
-                } else {
-                    alert('Your browser does not support sharing files.');
-                }
-            });
+        // Handle speech recognition errors
+        recognition.addEventListener('error', (event) => {
+            output.innerText = `Error: ${event.error}`;
         });
     </script>
+
 </body>
 </html>
