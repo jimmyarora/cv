@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speech to Text</title>
+    <title>Speech to Text (Hindi)</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Noto Sans Devanagari', sans-serif;
             margin: 20px;
             text-align: center;
         }
@@ -22,14 +22,16 @@
             min-height: 100px;
         }
     </style>
+    <!-- Google Font for Hindi (Devanagari Script) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <h1>Speech to Text</h1>
-    <button id="startBtn">Start Speech Recognition</button>
-    <button id="stopBtn">Stop Speech Recognition</button>
+    <h1>हिन्दी स्पीच टू टेक्स्ट</h1>
+    <button id="startBtn">स्पीच मान्यता प्रारंभ करें</button>
+    <button id="stopBtn">स्पीच मान्यता बंद करें</button>
 
-    <div id="output">Your speech will appear here...</div>
+    <div id="output">आपकी स्पीच यहाँ दिखाई देगी...</div>
 
     <script>
         const output = document.getElementById('output');
@@ -40,21 +42,21 @@
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new window.SpeechRecognition();
 
-        // Set recognition settings
-        recognition.lang = 'en-US'; // Set language
+        // Set recognition settings for Hindi
+        recognition.lang = 'hi-IN'; // Set language to Hindi
         recognition.interimResults = false; // Return only final results
         recognition.continuous = true; // Continuous recognition
 
         // Start speech recognition when button is clicked
         startBtn.addEventListener('click', () => {
             recognition.start();
-            output.innerText = 'Listening...';
+            output.innerText = 'सुन रहे हैं...';
         });
 
         // Stop speech recognition
         stopBtn.addEventListener('click', () => {
             recognition.stop();
-            output.innerText += '\nStopped listening.';
+            output.innerText += '\nसुनना बंद हो गया।';
         });
 
         // Handle speech recognition results
@@ -65,7 +67,7 @@
 
         // Handle speech recognition errors
         recognition.addEventListener('error', (event) => {
-            output.innerText = `Error: ${event.error}`;
+            output.innerText = `त्रुटि: ${event.error}`;
         });
     </script>
 
