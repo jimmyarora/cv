@@ -1,39 +1,119 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>contact</title>
-  </head>
-  <body>
-    <h3>Pan No. Expiry and id</h3>
-    <ul>
-      <li>9865598211</li>
-      <li>2022-12-22</li>
-      <li id="date"></li>
-    </ul>
-    <h1>Name : enkatanarayana Pavuluri - 9892903152 </h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Scan2Food - Order Food from Your Seat</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .hero-section {
+            background-color: #343a40;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .benefits-section {
+            background-color: #fff;
+            padding: 50px 0;
+        }
+        .benefits-section h2 {
+            margin-bottom: 30px;
+        }
+        .contact-section {
+            background-color: #343a40;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .contact-section h3 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hero-section">
+        <div class="container">
+            <h1>Welcome to Scan2Food</h1>
+            <p class="lead">Order Food from Your Seat - The Future of Theatre Dining</p>
+        </div>
+    </header>
 
-    <script>
-    var today = new Date();
-    var dd = today.getDate();
+    <!-- How It Works Section -->
+    <section class="container mt-5">
+        <h2 class="text-center mb-4">How It Works</h2>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <img src="https://via.placeholder.com/100" alt="Scan QR Code" class="img-fluid mb-3">
+                <h4>Scan the QR Code</h4>
+                <p>Scan the QR code available at your seat using your phone.</p>
+            </div>
+            <div class="col-md-3">
+                <img src="https://via.placeholder.com/100" alt="Choose from Menu" class="img-fluid mb-3">
+                <h4>Choose from the Menu</h4>
+                <p>Browse a wide selection of meals, snacks, and drinks.</p>
+            </div>
+            <div class="col-md-3">
+                <img src="https://via.placeholder.com/100" alt="Place Order" class="img-fluid mb-3">
+                <h4>Order with Ease</h4>
+                <p>Place your order securely and enjoy the convenience.</p>
+            </div>
+            <div class="col-md-3">
+                <img src="https://via.placeholder.com/100" alt="Delivered to Seat" class="img-fluid mb-3">
+                <h4>Food Delivered to Seat</h4>
+                <p>Relax while your food is delivered directly to your seat.</p>
+            </div>
+        </div>
+    </section>
 
-    var mm = today.getMonth()+1;
-    var yyyy = today.getFullYear();
-    if(dd<10)
-    {
-        dd='0'+dd;
-    }
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="text-center">Why Choose Scan2Food?</h2>
+            <div class="row mt-4">
+                <div class="col-md-4 text-center">
+                    <h5>Skip the Long Lines</h5>
+                    <p>No more standing in queues. Enjoy ordering right from your seat.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5>Never Miss a Scene</h5>
+                    <p>Order anytime during the movie and never miss the action.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5>Easy for Theatre Staff</h5>
+                    <p>Theatre staff can take orders using tablets, streamlining the process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    if(mm<10)
-    {
-        mm='0'+mm;
-    }
-    var today1 = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("date").innerHTML = today1;
-    </script>
+    <!-- For Theatre Owners Section -->
+    <section class="container mt-5">
+        <h2 class="text-center mb-4">For Theatre Owners</h2>
+        <p class="text-center">Enhance your theatre's food service experience with Scan2Food. Increase sales, reduce wait times, and make ordering food easier for your customers. Our service boosts customer satisfaction and makes life simpler for your staff.</p>
+    </section>
 
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h3>Ready to Bring the Future of Theatre Dining to Your Venue?</h3>
+            <p>Contact us today to learn how Scan2Food can revolutionize your theatre experience.</p>
+            <a href="mailto:info@scan2food.com" class="btn btn-primary">Contact Us</a>
+        </div>
+    </section>
 
-
-
-  </body>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
