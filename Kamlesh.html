@@ -2,18 +2,14 @@
 <html lang="en">
 <head>
     <title>Firebase Push Notifications</title>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging.js"></script>
+    <script type="module"  src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script type="module"src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 </head>
 <body>
-    <h1>Firebase Push updated ewwewe</h1>
+    <h1>Firebase Push updated ram</h1>
     <button onclick="requestPermission()">Enable Notifications</button>
     <p id="token"></p>
-       if (typeof firebase === 'undefined') {
-            console.error("Firebase SDK not loaded correctly. Check the script URLs.");
-        } else {
-            console.log("Firebase SDK loaded successfully.");
-        }
+    
     <script>
         // Firebase configuration (Replace with your own)
         const firebaseConfig = {
