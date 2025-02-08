@@ -6,7 +6,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging.js"></script>
 </head>
 <body>
-    <h1>Firebase Push Notifications</h1>
+    <h1>Firebase Push updated</h1>
     <button onclick="requestPermission()">Enable Notifications</button>
     <p id="token"></p>
 
@@ -28,7 +28,7 @@
         function requestPermission() {
             Notification.requestPermission().then((permission) => {
                 if (permission === "granted") {
-                    messaging.getToken({ vapidKey: "YOUR_VAPID_PUBLIC_KEY" }).then((token) => {
+                    messaging.getToken({ vapidKey: "BBhWCrAakRTU_EFMCBg_Eh50UeSsGAcsYre9I3nYVGsDL2pcTsIz8TS1RQOe2B0MPryuybF14o6XUx3Y4sh9hR8" }).then((token) => {
                         console.log("FCM Token:", token);
                         document.getElementById("token").innerText = token;
                     });
