@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Firebase Push Notifications</title>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging.js"></script>
+</head>
+<body>
+    <h1>Firebase Push Notifications</h1>
+    <button onclick="requestPermission()">Enable Notifications</button>
+    <p id="token"></p>
+
+    <script>
+        // Firebase configuration (Replace with your own)
+        const firebaseConfig = {
+         apiKey: "AIzaSyCVFZD8vuOLWjVqoVbEYFLezcKw6omZOIs",
+  authDomain: "appp-473e7.firebaseapp.com",
+  projectId: "appp-473e7",
+  storageBucket: "appp-473e7.firebasestorage.app",
+  messagingSenderId: "155889836071",
+  appId: "1:155889836071:web:b6cfebf2464bbd089a2e02",
+  measurementId: "G-4SFQ3ZXHW7"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
+
+        function requestPermission() {
+            Notification.requestPermission().then((permission) => {
+                if (permission === "granted") {
+                    messaging.getToken({ vapidKey: "YOUR_VAPID_PUBLIC_KEY" }).then((token) => {
+                        console.log("FCM Token:", token);
+                        document.getElementById("token").innerText = token;
+                    });
+                } else {
+                    console.log("Permission denied.");
+                }
+            });
+        }
+
+        // Handle Incoming Messages
+        messaging.onMessage((payload) => {
+            console.log("Message received:", payload);
+            alert("New Notification: " + payload.notification.body);
+        });
+    </script>
+</body>
+</html>
